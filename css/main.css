@@ -4,18 +4,61 @@
     box-sizing: border-box;
 }
 :root{
---yellow:#ffc914;
+--yellow:#fbc02d;
 --grey:#b5c2b7;
---black:rgb(46,40,42);
---blue:#00a7e1;
+--black:#212121;
+--blue:#40c4ff;
 --cream:#eddea4;    
---white:rgb(245,243,245);
+--white:#ffffff;
 }
 
 body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background: var(--white);
     color: var(--black);
+}
+
+.section-padding{
+    padding: 3rem 0;
+}
+
+.flexbox-parent{
+    max-width: 95vw;
+    margin: 2rem auto;
+}
+@media screen and (min-width:768px){
+    .flexbox-parent-medium{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+.section-title-container{
+    display: flex;
+    padding: 2rem 1.5rem;
+}
+
+.section-title-icon{
+    font-size: 4rem;
+    color: var(--yellow);
+    margin-right: 1rem;
+}
+
+.section-title-text{
+    line-height: 1.5;
+    border-left: 0.3rem solid var(--grey);
+    padding-left: 1rem;
+}
+.section-title-name{
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+}
+.section-title-info{
+    font-size: 1.5rem;
+
+    color: var(--grey);
 }
 
 .preLoader{
@@ -47,6 +90,7 @@ body{
 .banner{
     margin-left: 2rem;
     border-left: 0.5rem solid var(--yellow);
+    z-index: 4;
 }
 
 .banner-title{
@@ -55,11 +99,26 @@ body{
     margin-left: 1rem;
     text-transform: uppercase;
     color: var(--blue);
+    
 }
 
 .banner-title-strong{
     color: var(--yellow);
     font-size: 4rem;
+}
+
+.video-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.video-item{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .video-overLayer{
@@ -68,6 +127,156 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(245,243,245,0.3);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 2;
+}
+
+.navBtn{
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    font-size: 3rem;
+    color: var(--yellow);
+    cursor: pointer;
+    z-index: 3;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes pulse{
+    0%{transform: scale(1.0)}
+    50%{transform: scale(1.5)}
+    100%{transform: scale(1.0)}
+}
+.nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--yellow);
+    opacity: 0.6;
+    z-index: 4;
+    overflow: hidden;
+    width: 0rem;
+    transition:all 0.5s linear;
+}
+.nav-link{
+    list-style-type: none;
+}
+.nav-single-link{
+    display: block;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    text-transform: capitalize;
+    transition:all 0.5s linear;
+}
+.nav-single-link:hover{
+    background: var(--black);
+    color: var(--yellow);
+    padding-left: 1.5rem;
+}
+.nav--show{
+    width: 10rem;
+}
+
+/* social icons*/
+
+.social-icons{
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    width: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    justify-content: space-around;
+}
+.social-icon{
+    text-decoration: none;
+    font-size: 2rem;
+    color: var(--yellow);
+    transition: all 0.5s ease-out;
+}
+.social-icon:hover{
+    color: var(--white);
+    transform: scale(1.5);
+}
+
+.service{
+    display: flex;
+    margin: 1rem 0;
+}
+
+.service-icon{
+    font-size: 4rem;
+    align-self: center;
+    padding: 0.5rem;
+    color: var(--yellow);
+    transition: all 0.5s linear;
+}
+.service:hover .service-icon{
+    background: var(--blue);
+    color: var(--white);
+}
+
+.service-text{
+    padding: 0.5rem;
+}
+.service-name{
+    text-transform: capitalize;
+}
+.service-info{
+    color: var(--grey);
+    width: 70%;
+}
+
+@media screen and (min-width:768px){
+    .service{
+        flex: 0 0 calc(50% - 0.5rem);
+    }
+}
+
+@media screen and (min-width:998px){
+    .service{
+        flex: 0 0 calc(100% /3);
+    }
+}
+
+.contact{
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)) ,url('../image/main/adult-blur-break-582428.jpg')center/cover fixed no-repeat;
+    clip-path: polygon(0 0,100% 0,100% 100%, 0 100%);
+}
+
+.contact-title{
+    text-align: center;
+    color: var(--yellow);
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    letter-spacing: 0.5rem;
+}
+.contact-input{
+    background: transparent;
+    border: none;
+    border-bottom: 0.2rem solid var(--white);
+    font-size: 2rem;
+    padding: 0.25rem;
+    color: var(--white);
+    outline: none;
+}
+.contact-submit{
+    cursor: pointer;
+    border-color:  var(--yellow);
+    font-size: 2rem;
+    margin: 0.5rem;
+    padding: 0.25rem 1rem;
+    display: inline-block;
+    color: var(--yellow);
+    background: transparent;
 }
